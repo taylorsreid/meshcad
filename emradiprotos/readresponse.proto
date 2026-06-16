@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-// Go package name
-option go_package = "../emradiprotos";
-
-message ReadResponse {
-    bytes response = 1;
-}

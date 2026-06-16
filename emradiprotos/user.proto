@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+// Go package name
+option go_package = "../emradiprotos"; 
+
+message CreateUser {
+    string email = 1;
+    string password = 2;
+    string name = 3;
+}
+
+message UpdateUser {
+    string id = 1;
+    optional string email = 2;
+    optional string password = 3;
+    optional string name = 4;
+    optional string status = 5;
+    optional string meshAddress = 6;
+}

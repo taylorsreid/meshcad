@@ -3,9 +3,11 @@ syntax = "proto3";
 // Go package name
 option go_package = "../emradiprotos"; 
 
-message ReadRequest {
+import "collection.proto";
+
+message Read {
     bool multiple = 1;
-    string collection = 2;
+    Collection collection = 2;
     string filter = 3;
     optional string sort = 4;
     optional int32 limit = 5;

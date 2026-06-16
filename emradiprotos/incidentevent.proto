@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+// Go package name
+option go_package = "../emradiprotos";
+
+message CreateIncidentEvent {
+    string description = 1;
+    string created = 2;
+    string notes = 3;
+    string createdBy = 4;
+    string affectedUser = 5;
+}
+
+message UpdateIncidentEvent {
+    optional string id = 1;
+    optional string description = 2;
+    optional string created = 3;
+    optional string notes = 4;
+    optional string createdBy = 5;
+    optional string affectedUser = 6;
+}

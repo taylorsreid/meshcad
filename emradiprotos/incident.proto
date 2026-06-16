@@ -3,6 +3,12 @@ syntax = "proto3";
 // Go package name
 option go_package = "../emradiprotos";
 
+message CreateIncident {
+    float latitude = 1;
+    float longitude = 2;
+    string incidentType = 3;
+}
+
 message UpdateIncident {
     string id = 1;
     optional float latitude = 2;

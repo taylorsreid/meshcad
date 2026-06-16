@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+// Go package name
+option go_package = "../emradiprotos";
+
+enum Collection {
+    UNKNOWN = 0;
+    USER = 1;
+    INCIDENT = 2;
+    INCIDENT_EVENT = 3;
+}

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+// Go package name
+option go_package = "../emradiprotos";
+
+import "user.proto";
+import "incident.proto";
+import "incidentevent.proto";
+import "read.proto";
+
+message Request {
+    string id = 1; // uuid for the request
+    oneof payload {
+        CreateUser createUser = 2;
+        CreateIncident createIncident = 3;
+        CreateIncidentEvent createIncidentEvent = 4;
+        Read read = 5;
+        UpdateUser updateUser = 6;
+        UpdateIncident updateIncident = 7;
+        UpdateIncidentEvent updateIncidentEvent = 8;
+        // no delete yet, but we can add it later if needed
+    }
+}
+
+message Response {
+    string id = 1; // uuid for the response, corresponding to the request id
+    int32 status = 2; // e.g. HTTP status code
+    optional string payload = 3; // id for create, JSON for read, nil for update, or detailed error message on failure
+}
+
+message EmradiMessage {
+    oneof payload {
+        Request request = 1;
+        Response response = 2;
+    }
+}
