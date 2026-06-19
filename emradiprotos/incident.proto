@@ -4,15 +4,19 @@ syntax = "proto3";
 option go_package = "../emradiprotos";
 
 message CreateIncident {
-    float latitude = 1;
-    float longitude = 2;
-    string incidentType = 3;
+    uint32 id = 1;
+    string incidentType = 2;
+    optional float latitude = 3;
+    optional float longitude = 4;
+    optional string address = 5;
+    string createdBy = 6;
 }
 
 message UpdateIncident {
-    string id = 1;
-    optional float latitude = 2;
-    optional float longitude = 3;
-    optional string incidentType = 4;
-    optional string closedAt = 5;
+    uint32 id = 1;
+    optional string incidentType = 2;
+    optional float latitude = 3;
+    optional float longitude = 4;
+    optional string address = 5;
+    optional uint64 closedAt = 6;
 }

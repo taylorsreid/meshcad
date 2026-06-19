@@ -23,9 +23,9 @@ const (
 
 type EmradiChunk struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Numerator     int32                  `protobuf:"varint,2,opt,name=numerator,proto3" json:"numerator,omitempty"`
-	Denominator   int32                  `protobuf:"varint,3,opt,name=denominator,proto3" json:"denominator,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Numerator     uint32                 `protobuf:"varint,2,opt,name=numerator,proto3" json:"numerator,omitempty"`
+	Denominator   uint32                 `protobuf:"varint,3,opt,name=denominator,proto3" json:"denominator,omitempty"`
 	Payload       []byte                 `protobuf:"bytes,4,opt,name=payload,proto3" json:"payload,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -61,21 +61,21 @@ func (*EmradiChunk) Descriptor() ([]byte, []int) {
 	return file_main_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EmradiChunk) GetId() string {
+func (x *EmradiChunk) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *EmradiChunk) GetNumerator() int32 {
+func (x *EmradiChunk) GetNumerator() uint32 {
 	if x != nil {
 		return x.Numerator
 	}
 	return 0
 }
 
-func (x *EmradiChunk) GetDenominator() int32 {
+func (x *EmradiChunk) GetDenominator() uint32 {
 	if x != nil {
 		return x.Denominator
 	}
@@ -91,7 +91,7 @@ func (x *EmradiChunk) GetPayload() []byte {
 
 type Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`        // HTTP status code
+	Status        uint32                 `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`        // HTTP status code
 	Payload       *string                `protobuf:"bytes,2,opt,name=payload,proto3,oneof" json:"payload,omitempty"` // id for create, JSON for read, nil for update, or detailed error message on failure
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -127,7 +127,7 @@ func (*Response) Descriptor() ([]byte, []int) {
 	return file_main_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Response) GetStatus() int32 {
+func (x *Response) GetStatus() uint32 {
 	if x != nil {
 		return x.Status
 	}
@@ -328,12 +328,12 @@ const file_main_proto_rawDesc = "" +
 	"user.proto\x1a\x0eincident.proto\x1a\x13incidentevent.proto\x1a\n" +
 	"read.proto\"w\n" +
 	"\vEmradiChunk\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
-	"\tnumerator\x18\x02 \x01(\x05R\tnumerator\x12 \n" +
-	"\vdenominator\x18\x03 \x01(\x05R\vdenominator\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1c\n" +
+	"\tnumerator\x18\x02 \x01(\rR\tnumerator\x12 \n" +
+	"\vdenominator\x18\x03 \x01(\rR\vdenominator\x12\x18\n" +
 	"\apayload\x18\x04 \x01(\fR\apayload\"M\n" +
 	"\bResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x1d\n" +
+	"\x06status\x18\x01 \x01(\rR\x06status\x12\x1d\n" +
 	"\apayload\x18\x02 \x01(\tH\x00R\apayload\x88\x01\x01B\n" +
 	"\n" +
 	"\b_payload\"\xc2\x03\n" +

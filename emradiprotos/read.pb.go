@@ -27,8 +27,8 @@ type Read struct {
 	Collection    Collection             `protobuf:"varint,2,opt,name=collection,proto3,enum=Collection" json:"collection,omitempty"`
 	Filter        string                 `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	Sort          *string                `protobuf:"bytes,4,opt,name=sort,proto3,oneof" json:"sort,omitempty"`
-	Limit         *int32                 `protobuf:"varint,5,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
-	Offset        *int32                 `protobuf:"varint,6,opt,name=offset,proto3,oneof" json:"offset,omitempty"`
+	Limit         *uint32                `protobuf:"varint,5,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	Offset        *uint32                `protobuf:"varint,6,opt,name=offset,proto3,oneof" json:"offset,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -91,14 +91,14 @@ func (x *Read) GetSort() string {
 	return ""
 }
 
-func (x *Read) GetLimit() int32 {
+func (x *Read) GetLimit() uint32 {
 	if x != nil && x.Limit != nil {
 		return *x.Limit
 	}
 	return 0
 }
 
-func (x *Read) GetOffset() int32 {
+func (x *Read) GetOffset() uint32 {
 	if x != nil && x.Offset != nil {
 		return *x.Offset
 	}
@@ -118,8 +118,8 @@ const file_read_proto_rawDesc = "" +
 	"collection\x12\x16\n" +
 	"\x06filter\x18\x03 \x01(\tR\x06filter\x12\x17\n" +
 	"\x04sort\x18\x04 \x01(\tH\x00R\x04sort\x88\x01\x01\x12\x19\n" +
-	"\x05limit\x18\x05 \x01(\x05H\x01R\x05limit\x88\x01\x01\x12\x1b\n" +
-	"\x06offset\x18\x06 \x01(\x05H\x02R\x06offset\x88\x01\x01B\a\n" +
+	"\x05limit\x18\x05 \x01(\rH\x01R\x05limit\x88\x01\x01\x12\x1b\n" +
+	"\x06offset\x18\x06 \x01(\rH\x02R\x06offset\x88\x01\x01B\a\n" +
 	"\x05_sortB\b\n" +
 	"\x06_limitB\t\n" +
 	"\a_offsetB\x11Z\x0f../emradiprotosb\x06proto3"

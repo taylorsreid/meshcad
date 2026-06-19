@@ -83,12 +83,12 @@ func (x *CreateUser) GetName() string {
 
 type UpdateUser struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Email         *string                `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	Password      *string                `protobuf:"bytes,3,opt,name=password,proto3,oneof" json:"password,omitempty"`
 	Name          *string                `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	Status        *string                `protobuf:"bytes,5,opt,name=status,proto3,oneof" json:"status,omitempty"`
-	MeshAddress   *string                `protobuf:"bytes,6,opt,name=meshAddress,proto3,oneof" json:"meshAddress,omitempty"`
+	MeshAddress   *uint32                `protobuf:"varint,6,opt,name=meshAddress,proto3,oneof" json:"meshAddress,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -123,11 +123,11 @@ func (*UpdateUser) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateUser) GetId() string {
+func (x *UpdateUser) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *UpdateUser) GetEmail() string {
@@ -158,11 +158,11 @@ func (x *UpdateUser) GetStatus() string {
 	return ""
 }
 
-func (x *UpdateUser) GetMeshAddress() string {
+func (x *UpdateUser) GetMeshAddress() uint32 {
 	if x != nil && x.MeshAddress != nil {
 		return *x.MeshAddress
 	}
-	return ""
+	return 0
 }
 
 var File_user_proto protoreflect.FileDescriptor
@@ -178,12 +178,12 @@ const file_user_proto_rawDesc = "" +
 	"\x04name\x18\x03 \x01(\tR\x04name\"\xf0\x01\n" +
 	"\n" +
 	"UpdateUser\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
 	"\x05email\x18\x02 \x01(\tH\x00R\x05email\x88\x01\x01\x12\x1f\n" +
 	"\bpassword\x18\x03 \x01(\tH\x01R\bpassword\x88\x01\x01\x12\x17\n" +
 	"\x04name\x18\x04 \x01(\tH\x02R\x04name\x88\x01\x01\x12\x1b\n" +
 	"\x06status\x18\x05 \x01(\tH\x03R\x06status\x88\x01\x01\x12%\n" +
-	"\vmeshAddress\x18\x06 \x01(\tH\x04R\vmeshAddress\x88\x01\x01B\b\n" +
+	"\vmeshAddress\x18\x06 \x01(\rH\x04R\vmeshAddress\x88\x01\x01B\b\n" +
 	"\x06_emailB\v\n" +
 	"\t_passwordB\a\n" +
 	"\x05_nameB\t\n" +

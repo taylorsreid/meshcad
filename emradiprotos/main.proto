@@ -9,14 +9,14 @@ import "incidentevent.proto";
 import "read.proto";
 
 message EmradiChunk {
-    string id = 1;
-    int32 numerator = 2;
-    int32 denominator = 3;
+    uint32 id = 1;
+    uint32 numerator = 2;
+    uint32 denominator = 3;
     bytes payload = 4;
 }
 
 message Response {
-    int32 status = 1; // HTTP status code
+    uint32 status = 1; // HTTP status code
     optional string payload = 2; // id for create, JSON for read, nil for update, or detailed error message on failure
 }
 
