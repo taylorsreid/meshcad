@@ -4,7 +4,7 @@ syntax = "proto3";
 option go_package = "../emradiprotos";
 
 message CreateIncidentEvent {
-    uint32 id = 1;
+    optional uint32 id = 1;
     string title = 2;
     optional string details = 3;
     string createdBy = 4;

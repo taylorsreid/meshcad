@@ -23,7 +23,7 @@ const (
 
 type CreateIncident struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            *uint32                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	IncidentType  string                 `protobuf:"bytes,2,opt,name=incidentType,proto3" json:"incidentType,omitempty"`
 	Latitude      *float64               `protobuf:"fixed64,3,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
 	Longitude     *float64               `protobuf:"fixed64,4,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
@@ -64,8 +64,8 @@ func (*CreateIncident) Descriptor() ([]byte, []int) {
 }
 
 func (x *CreateIncident) GetId() uint32 {
-	if x != nil {
-		return x.Id
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
@@ -193,14 +193,15 @@ var File_incident_proto protoreflect.FileDescriptor
 
 const file_incident_proto_rawDesc = "" +
 	"\n" +
-	"\x0eincident.proto\"\xec\x01\n" +
-	"\x0eCreateIncident\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\"\n" +
+	"\x0eincident.proto\"\xf8\x01\n" +
+	"\x0eCreateIncident\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\rH\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\fincidentType\x18\x02 \x01(\tR\fincidentType\x12\x1f\n" +
-	"\blatitude\x18\x03 \x01(\x01H\x00R\blatitude\x88\x01\x01\x12!\n" +
-	"\tlongitude\x18\x04 \x01(\x01H\x01R\tlongitude\x88\x01\x01\x12\x1d\n" +
-	"\aaddress\x18\x05 \x01(\tH\x02R\aaddress\x88\x01\x01\x12\x1c\n" +
-	"\tcreatedBy\x18\x06 \x01(\tR\tcreatedByB\v\n" +
+	"\blatitude\x18\x03 \x01(\x01H\x01R\blatitude\x88\x01\x01\x12!\n" +
+	"\tlongitude\x18\x04 \x01(\x01H\x02R\tlongitude\x88\x01\x01\x12\x1d\n" +
+	"\aaddress\x18\x05 \x01(\tH\x03R\aaddress\x88\x01\x01\x12\x1c\n" +
+	"\tcreatedBy\x18\x06 \x01(\tR\tcreatedByB\x05\n" +
+	"\x03_idB\v\n" +
 	"\t_latitudeB\f\n" +
 	"\n" +
 	"_longitudeB\n" +

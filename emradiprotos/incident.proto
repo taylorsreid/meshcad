@@ -4,7 +4,7 @@ syntax = "proto3";
 option go_package = "../emradiprotos";
 
 message CreateIncident {
-    uint32 id = 1;
+    optional uint32 id = 1;
     string incidentType = 2;
     optional double latitude = 3;
     optional double longitude = 4;
