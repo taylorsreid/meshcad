@@ -92,7 +92,7 @@ func (x *MeshcadChunk) GetPayload() []byte {
 type Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        uint32                 `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`        // HTTP status code
-	Payload       *string                `protobuf:"bytes,2,opt,name=payload,proto3,oneof" json:"payload,omitempty"` // id for create, JSON for read, nil for update, or detailed error message on failure
+	Payload       *string                `protobuf:"bytes,2,opt,name=payload,proto3,oneof" json:"payload,omitempty"` // id for create or authorize, JSON for read, nil for update, or detailed error message on failure
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -154,6 +154,7 @@ type Payload struct {
 	//	*Payload_UpdateUser
 	//	*Payload_UpdateIncident
 	//	*Payload_UpdateIncidentEvent
+	//	*Payload_AuthorizeUser
 	Payload       isPayload_Payload `protobuf_oneof:"payload"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -275,6 +276,15 @@ func (x *Payload) GetUpdateIncidentEvent() *UpdateIncidentEvent {
 	return nil
 }
 
+func (x *Payload) GetAuthorizeUser() *AuthorizeUser {
+	if x != nil {
+		if x, ok := x.Payload.(*Payload_AuthorizeUser); ok {
+			return x.AuthorizeUser
+		}
+	}
+	return nil
+}
+
 type isPayload_Payload interface {
 	isPayload_Payload()
 }
@@ -308,7 +318,11 @@ type Payload_UpdateIncident struct {
 }
 
 type Payload_UpdateIncidentEvent struct {
-	UpdateIncidentEvent *UpdateIncidentEvent `protobuf:"bytes,9,opt,name=updateIncidentEvent,proto3,oneof"` // no delete yet, but we can add it later if needed
+	UpdateIncidentEvent *UpdateIncidentEvent `protobuf:"bytes,9,opt,name=updateIncidentEvent,proto3,oneof"`
+}
+
+type Payload_AuthorizeUser struct {
+	AuthorizeUser *AuthorizeUser `protobuf:"bytes,10,opt,name=authorizeUser,proto3,oneof"` // no delete yet, but we can add it later if needed
 }
 
 func (*Payload_Response) isPayload_Payload() {}
@@ -327,6 +341,8 @@ func (*Payload_UpdateIncident) isPayload_Payload() {}
 
 func (*Payload_UpdateIncidentEvent) isPayload_Payload() {}
 
+func (*Payload_AuthorizeUser) isPayload_Payload() {}
+
 var File_main_proto protoreflect.FileDescriptor
 
 const file_main_proto_rawDesc = "" +
@@ -344,7 +360,7 @@ const file_main_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\rR\x06status\x12\x1d\n" +
 	"\apayload\x18\x02 \x01(\tH\x00R\apayload\x88\x01\x01B\n" +
 	"\n" +
-	"\b_payload\"\xe0\x03\n" +
+	"\b_payload\"\x98\x04\n" +
 	"\aPayload\x12\x1c\n" +
 	"\ttimestamp\x18\x01 \x01(\rR\ttimestamp\x12'\n" +
 	"\bresponse\x18\x02 \x01(\v2\t.ResponseH\x00R\bresponse\x12-\n" +
@@ -358,7 +374,9 @@ const file_main_proto_rawDesc = "" +
 	"updateUser\x18\a \x01(\v2\v.UpdateUserH\x00R\n" +
 	"updateUser\x129\n" +
 	"\x0eupdateIncident\x18\b \x01(\v2\x0f.UpdateIncidentH\x00R\x0eupdateIncident\x12H\n" +
-	"\x13updateIncidentEvent\x18\t \x01(\v2\x14.UpdateIncidentEventH\x00R\x13updateIncidentEventB\t\n" +
+	"\x13updateIncidentEvent\x18\t \x01(\v2\x14.UpdateIncidentEventH\x00R\x13updateIncidentEvent\x126\n" +
+	"\rauthorizeUser\x18\n" +
+	" \x01(\v2\x0e.AuthorizeUserH\x00R\rauthorizeUserB\t\n" +
 	"\apayloadB\x12Z\x10../meshcadprotosb\x06proto3"
 
 var (
@@ -385,21 +403,23 @@ var file_main_proto_goTypes = []any{
 	(*UpdateUser)(nil),          // 7: UpdateUser
 	(*UpdateIncident)(nil),      // 8: UpdateIncident
 	(*UpdateIncidentEvent)(nil), // 9: UpdateIncidentEvent
+	(*AuthorizeUser)(nil),       // 10: AuthorizeUser
 }
 var file_main_proto_depIdxs = []int32{
-	1, // 0: Payload.response:type_name -> Response
-	3, // 1: Payload.createUser:type_name -> CreateUser
-	4, // 2: Payload.createIncident:type_name -> CreateIncident
-	5, // 3: Payload.createIncidentEvent:type_name -> CreateIncidentEvent
-	6, // 4: Payload.read:type_name -> Read
-	7, // 5: Payload.updateUser:type_name -> UpdateUser
-	8, // 6: Payload.updateIncident:type_name -> UpdateIncident
-	9, // 7: Payload.updateIncidentEvent:type_name -> UpdateIncidentEvent
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	1,  // 0: Payload.response:type_name -> Response
+	3,  // 1: Payload.createUser:type_name -> CreateUser
+	4,  // 2: Payload.createIncident:type_name -> CreateIncident
+	5,  // 3: Payload.createIncidentEvent:type_name -> CreateIncidentEvent
+	6,  // 4: Payload.read:type_name -> Read
+	7,  // 5: Payload.updateUser:type_name -> UpdateUser
+	8,  // 6: Payload.updateIncident:type_name -> UpdateIncident
+	9,  // 7: Payload.updateIncidentEvent:type_name -> UpdateIncidentEvent
+	10, // 8: Payload.authorizeUser:type_name -> AuthorizeUser
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_main_proto_init() }
@@ -421,6 +441,7 @@ func file_main_proto_init() {
 		(*Payload_UpdateUser)(nil),
 		(*Payload_UpdateIncident)(nil),
 		(*Payload_UpdateIncidentEvent)(nil),
+		(*Payload_AuthorizeUser)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

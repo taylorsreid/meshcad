@@ -17,7 +17,7 @@ message MeshcadChunk {
 
 message Response {
     uint32 status = 1; // HTTP status code
-    optional string payload = 2; // id for create, JSON for read, nil for update, or detailed error message on failure
+    optional string payload = 2; // id for create or authorize, JSON for read, nil for update, or detailed error message on failure
 }
 
 message Payload {
@@ -31,6 +31,7 @@ message Payload {
         UpdateUser updateUser = 7;
         UpdateIncident updateIncident = 8;
         UpdateIncidentEvent updateIncidentEvent = 9;
+        AuthorizeUser authorizeUser = 10;
         // no delete yet, but we can add it later if needed
     }
 }

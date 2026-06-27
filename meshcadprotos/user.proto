@@ -17,3 +17,8 @@ message UpdateUser {
     optional string status = 5;
     optional uint32 meshAddress = 6;
 }
+
+message AuthorizeUser {
+    string email = 1;
+    string password =2;
+}
