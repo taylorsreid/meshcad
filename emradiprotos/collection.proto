@@ -4,8 +4,8 @@ syntax = "proto3";
 option go_package = "../emradiprotos";
 
 enum Collection {
-    UNKNOWN = 0;
-    USER = 1;
-    INCIDENT = 2;
-    INCIDENT_EVENT = 3;
+    unknown = 0;
+    users = 1;
+    incidents = 2;
+    incidentEvents = 3;
 }

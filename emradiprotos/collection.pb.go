@@ -24,25 +24,25 @@ const (
 type Collection int32
 
 const (
-	Collection_UNKNOWN        Collection = 0
-	Collection_USER           Collection = 1
-	Collection_INCIDENT       Collection = 2
-	Collection_INCIDENT_EVENT Collection = 3
+	Collection_unknown        Collection = 0
+	Collection_users          Collection = 1
+	Collection_incidents      Collection = 2
+	Collection_incidentEvents Collection = 3
 )
 
 // Enum value maps for Collection.
 var (
 	Collection_name = map[int32]string{
-		0: "UNKNOWN",
-		1: "USER",
-		2: "INCIDENT",
-		3: "INCIDENT_EVENT",
+		0: "unknown",
+		1: "users",
+		2: "incidents",
+		3: "incidentEvents",
 	}
 	Collection_value = map[string]int32{
-		"UNKNOWN":        0,
-		"USER":           1,
-		"INCIDENT":       2,
-		"INCIDENT_EVENT": 3,
+		"unknown":        0,
+		"users":          1,
+		"incidents":      2,
+		"incidentEvents": 3,
 	}
 )
 
@@ -77,13 +77,13 @@ var File_collection_proto protoreflect.FileDescriptor
 
 const file_collection_proto_rawDesc = "" +
 	"\n" +
-	"\x10collection.proto*E\n" +
+	"\x10collection.proto*G\n" +
 	"\n" +
 	"Collection\x12\v\n" +
-	"\aUNKNOWN\x10\x00\x12\b\n" +
-	"\x04USER\x10\x01\x12\f\n" +
-	"\bINCIDENT\x10\x02\x12\x12\n" +
-	"\x0eINCIDENT_EVENT\x10\x03B\x11Z\x0f../emradiprotosb\x06proto3"
+	"\aunknown\x10\x00\x12\t\n" +
+	"\x05users\x10\x01\x12\r\n" +
+	"\tincidents\x10\x02\x12\x12\n" +
+	"\x0eincidentEvents\x10\x03B\x11Z\x0f../emradiprotosb\x06proto3"
 
 var (
 	file_collection_proto_rawDescOnce sync.Once

@@ -74,7 +74,7 @@ func (x *Read) GetCollection() Collection {
 	if x != nil {
 		return x.Collection
 	}
-	return Collection_UNKNOWN
+	return Collection_unknown
 }
 
 func (x *Read) GetFilter() string {
