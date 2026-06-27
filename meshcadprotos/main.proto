@@ -8,7 +8,7 @@ import "incident.proto";
 import "incidentevent.proto";
 import "read.proto";
 
-message EmradiChunk {
+message MeshcadChunk {
     uint32 id = 1;
     uint32 numerator = 2;
     uint32 denominator = 3;

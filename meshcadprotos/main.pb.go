@@ -21,7 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type EmradiChunk struct {
+type MeshcadChunk struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Numerator     uint32                 `protobuf:"varint,2,opt,name=numerator,proto3" json:"numerator,omitempty"`
@@ -31,20 +31,20 @@ type EmradiChunk struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *EmradiChunk) Reset() {
-	*x = EmradiChunk{}
+func (x *MeshcadChunk) Reset() {
+	*x = MeshcadChunk{}
 	mi := &file_main_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EmradiChunk) String() string {
+func (x *MeshcadChunk) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EmradiChunk) ProtoMessage() {}
+func (*MeshcadChunk) ProtoMessage() {}
 
-func (x *EmradiChunk) ProtoReflect() protoreflect.Message {
+func (x *MeshcadChunk) ProtoReflect() protoreflect.Message {
 	mi := &file_main_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -56,33 +56,33 @@ func (x *EmradiChunk) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EmradiChunk.ProtoReflect.Descriptor instead.
-func (*EmradiChunk) Descriptor() ([]byte, []int) {
+// Deprecated: Use MeshcadChunk.ProtoReflect.Descriptor instead.
+func (*MeshcadChunk) Descriptor() ([]byte, []int) {
 	return file_main_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EmradiChunk) GetId() uint32 {
+func (x *MeshcadChunk) GetId() uint32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *EmradiChunk) GetNumerator() uint32 {
+func (x *MeshcadChunk) GetNumerator() uint32 {
 	if x != nil {
 		return x.Numerator
 	}
 	return 0
 }
 
-func (x *EmradiChunk) GetDenominator() uint32 {
+func (x *MeshcadChunk) GetDenominator() uint32 {
 	if x != nil {
 		return x.Denominator
 	}
 	return 0
 }
 
-func (x *EmradiChunk) GetPayload() []byte {
+func (x *MeshcadChunk) GetPayload() []byte {
 	if x != nil {
 		return x.Payload
 	}
@@ -334,8 +334,8 @@ const file_main_proto_rawDesc = "" +
 	"\n" +
 	"main.proto\x1a\n" +
 	"user.proto\x1a\x0eincident.proto\x1a\x13incidentevent.proto\x1a\n" +
-	"read.proto\"w\n" +
-	"\vEmradiChunk\x12\x0e\n" +
+	"read.proto\"x\n" +
+	"\fMeshcadChunk\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1c\n" +
 	"\tnumerator\x18\x02 \x01(\rR\tnumerator\x12 \n" +
 	"\vdenominator\x18\x03 \x01(\rR\vdenominator\x12\x18\n" +
@@ -375,7 +375,7 @@ func file_main_proto_rawDescGZIP() []byte {
 
 var file_main_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_main_proto_goTypes = []any{
-	(*EmradiChunk)(nil),         // 0: EmradiChunk
+	(*MeshcadChunk)(nil),        // 0: MeshcadChunk
 	(*Response)(nil),            // 1: Response
 	(*Payload)(nil),             // 2: Payload
 	(*CreateUser)(nil),          // 3: CreateUser
