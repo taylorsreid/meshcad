@@ -25,7 +25,7 @@ type Read struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Multiple      bool                   `protobuf:"varint,1,opt,name=multiple,proto3" json:"multiple,omitempty"`
 	Collection    Collection             `protobuf:"varint,2,opt,name=collection,proto3,enum=Collection" json:"collection,omitempty"`
-	Filter        string                 `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
+	Filter        *string                `protobuf:"bytes,3,opt,name=filter,proto3,oneof" json:"filter,omitempty"`
 	Sort          *string                `protobuf:"bytes,4,opt,name=sort,proto3,oneof" json:"sort,omitempty"`
 	Limit         *uint32                `protobuf:"varint,5,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
 	Offset        *uint32                `protobuf:"varint,6,opt,name=offset,proto3,oneof" json:"offset,omitempty"`
@@ -78,8 +78,8 @@ func (x *Read) GetCollection() Collection {
 }
 
 func (x *Read) GetFilter() string {
-	if x != nil {
-		return x.Filter
+	if x != nil && x.Filter != nil {
+		return *x.Filter
 	}
 	return ""
 }
@@ -110,16 +110,17 @@ var File_read_proto protoreflect.FileDescriptor
 const file_read_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"read.proto\x1a\x10collection.proto\"\xd6\x01\n" +
+	"read.proto\x1a\x10collection.proto\"\xe6\x01\n" +
 	"\x04Read\x12\x1a\n" +
 	"\bmultiple\x18\x01 \x01(\bR\bmultiple\x12+\n" +
 	"\n" +
 	"collection\x18\x02 \x01(\x0e2\v.CollectionR\n" +
-	"collection\x12\x16\n" +
-	"\x06filter\x18\x03 \x01(\tR\x06filter\x12\x17\n" +
-	"\x04sort\x18\x04 \x01(\tH\x00R\x04sort\x88\x01\x01\x12\x19\n" +
-	"\x05limit\x18\x05 \x01(\rH\x01R\x05limit\x88\x01\x01\x12\x1b\n" +
-	"\x06offset\x18\x06 \x01(\rH\x02R\x06offset\x88\x01\x01B\a\n" +
+	"collection\x12\x1b\n" +
+	"\x06filter\x18\x03 \x01(\tH\x00R\x06filter\x88\x01\x01\x12\x17\n" +
+	"\x04sort\x18\x04 \x01(\tH\x01R\x04sort\x88\x01\x01\x12\x19\n" +
+	"\x05limit\x18\x05 \x01(\rH\x02R\x05limit\x88\x01\x01\x12\x1b\n" +
+	"\x06offset\x18\x06 \x01(\rH\x03R\x06offset\x88\x01\x01B\t\n" +
+	"\a_filterB\a\n" +
 	"\x05_sortB\b\n" +
 	"\x06_limitB\t\n" +
 	"\a_offsetB\x12Z\x10../meshcadprotosb\x06proto3"

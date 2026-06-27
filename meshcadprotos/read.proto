@@ -8,7 +8,7 @@ import "collection.proto";
 message Read {
     bool multiple = 1;
     Collection collection = 2;
-    string filter = 3;
+    optional string filter = 3;
     optional string sort = 4;
     optional uint32 limit = 5;
     optional uint32 offset = 6;
